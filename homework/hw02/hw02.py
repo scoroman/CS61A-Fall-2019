@@ -33,13 +33,20 @@ def product(n, term):
     >>> product(3, triple)    # 1*3 * 2*3 * 3*3
     162
     """
-    k = 1
-    total = 1 
-    while(k <= n):
-        total = total * (term(k)) 
-        k += 1
-    return total 
- 
+    "*** YOUR CODE HERE ***"
+    value = 1
+    for i in range(1, n+1):
+        value = value * term(i)
+        print("this is value: " + str(value))
+    return value
+
+"""test_1 = product(5, square)
+print(test_1)
+test_2 = product(3, triple)
+print(test_2)
+"""
+
+
 def accumulate(combiner, base, n, term):
     """Return the result of combining the first n terms in a sequence and base.
     The terms to be combined are term(1), term(2), ..., term(n).  combiner is a
@@ -57,16 +64,30 @@ def accumulate(combiner, base, n, term):
     72
     >>> accumulate(lambda x, y: x + y + 1, 2, 3, square)
     19
+    >>> accumulate(lambda x, y: 2 * (x + y), 2, 3, square)
+    58
+    >>> accumulate(lambda x, y: (x + y) % 17, 19, 20, square)
+    16
+    def accumulate(combiner, base, n, term):
+    >>> accumulate(mul, 2, 3, square)    # 2 * 1^2 * 2^2 * 3^2
+    72
     """
+    "*** YOUR CODE HERE ***"
     total = base
-    k = 1
-    while(k <= n):
-        total = combiner(total, term(k)) 
-        k += 1 
+    i = 1
+    while i <= n:
+        print("this is total: " + str(total)) # 11 + 1^2 + 2^2 + 3^2
+        print("this is i: " + str(i))
+        total = combiner(total, term(i)) # 11 + 1^2
+        i += 1
+    return total
 
-    return total 
- 
- 
+"""test_1 = accumulate(mul, 2, 3, square)
+print(test_1)
+test_2 = accumulate(add, 11, 3, square)
+print(test_2)
+test_3 = accumulate(lambda x, y: x + y + 1, 2, 3, square)
+print(test_3)"""
 def summation_using_accumulate(n, term):
     """Returns the sum of term(1) + ... + term(n). The implementation
     uses accumulate.
@@ -81,7 +102,13 @@ def summation_using_accumulate(n, term):
     ...       ['Recursion', 'For', 'While'])
     True
     """
+    "*** YOUR CODE HERE ***"
     return accumulate(add, 0, n, term)
+
+"""test_1 = summation_using_accumulate(5, square)
+print(test_1)
+test_2 = summation_using_accumulate(5, triple)
+print(test_2)"""
 
 def product_using_accumulate(n, term):
     """An implementation of product using accumulate.
@@ -96,14 +123,21 @@ def product_using_accumulate(n, term):
     ...       ['Recursion', 'For', 'While'])
     True
     """
-
+    "*** YOUR CODE HERE ***"
     return accumulate(mul, 1, n, term)
+
+test_1 = product_using_accumulate(4, square)
+print (test_1)
+test_2 = product_using_accumulate(6, triple)
+print(test_2)
+
 
 def compose1(f, g):
     """Return a function h, such that h(x) = f(g(x))."""
     def h(x):
         return f(g(x))
     return h
+
 
 def make_repeater(f, n):
     """Return the function that computes the nth application of f.
@@ -120,14 +154,17 @@ def make_repeater(f, n):
     >>> make_repeater(square, 0)(5) # Yes, it makes sense to apply the function zero times! 
     5
     """
-
+    "*** YOUR CODE HERE ***"
     k = identity
-    while(n > 0):
+    print(k)
+    for i in range (1, n+1):
         k = compose1(f, k)
-        n -= 1
+        #print(k)
     return k
 
- 
+test_1 = make_repeater(triple, 5)(1)
+print(test_1)
+
 
 ##########################
 # Just for fun Questions #
