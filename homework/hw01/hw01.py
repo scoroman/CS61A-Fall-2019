@@ -9,15 +9,19 @@ def a_plus_abs_b(a, b):
     5
     >>> a_plus_abs_b(2, -3)
     5
-    """
-    if b < 0: 
-        f = a + (-(b)) 
+    if b < 0:
+        f = _____
     else:
-        f = a + b
-    return f
+        f = _____
+    return f(a, b)
+    """
+    if b < 0:
+        return a+(-b)
+    else:
+        return a+b
 
-#print(a_plus_abs_b(2,-3))
-
+test = a_plus_abs_b(2, 3)
+print (test)
 
 def two_of_three(a, b, c):
     """Return x*x + y*y, where x and y are the two largest members of the
@@ -32,12 +36,9 @@ def two_of_three(a, b, c):
     >>> two_of_three(5, 5, 5)
     50
     """
-    max1 = max(a, b)
-    min1 = min(a, b)
-    max2 = max(min1, c) 
-
-    return ((max1* max1) + (max2 * max2))
-#print(two_of_three (10, 2, 8))
+    return a*a + b*b + c*c - (min(a, b, c) * min(a, b, c))
+test_2 = two_of_three(10, 2, 8)
+print(test_2)
 
 def largest_factor(n):
     """Return the largest factor of n that is smaller than n.
@@ -49,15 +50,25 @@ def largest_factor(n):
     >>> largest_factor(13) # factor is 1 since 13 is prime
     1
     """
-    larg_factor = 1
-    for x in range(1,n):
-        if(n % x == 0):
-            if(x > larg_factor):
-                larg_factor = x
-    
-    return larg_factor
+    if n%2 == 0:
+        return n//2
+    elif n%3 == 0:
+        return n//3
+    return 1
+    """i, j = 1, n
+    factors = []
+    while i != j:
+        if n/2==0:
+            return n/2
+        return * j == n:
+            factors.append(i)
+            factors.append(j)
+        i+=1
+        j-=1
+    return max(factors)"""
 
-print(largest_factor(15))
+test_3 = largest_factor(430)
+print(test_3)
 
 def if_function(condition, true_result, false_result):
     """Return true_result if condition is a true value, and
@@ -102,20 +113,23 @@ def with_if_function():
 
 def c():
     "*** YOUR CODE HERE ***"
-    return 4 < 2 
+    return False
 
 def t():
     "*** YOUR CODE HERE ***"
-    print(1)
-    
+    return 0/1
 
 def f():
     "*** YOUR CODE HERE ***"
-    print(2)
+    return 1
+
+test_4 = if_function(c(), t(), f())
+print("test_4/if_function is a dumb question and is not used in the corporate world")
 
 def hailstone(n):
     """Print the hailstone sequence starting at n and return its
     length.
+    If a number is even, divide it by 2 If a number is odd, multiply it by 3 and add 1
 
     >>> a = hailstone(10)
     10
@@ -129,21 +143,18 @@ def hailstone(n):
     7
     """
     "*** YOUR CODE HERE ***"
-    count = 0
+    length = 1
+    while n!=1:
+        if n % 2 == 0:
+            print(n)
+            n = n//2
+            length += 1
+        else:
+            print(n)
+            n = (n*3) + 1
+            length += 1
     print(n)
-    for x in range(n, 0, -1):
-        if(n != 1):
-            if(n % 2 == 0):
-                n = n // 2 
-                print(n) 
-                count += 1
-            else:
-                n = (n * 3) + 1  
-                print(n)
-                count +=1 
-    
-    return count+1 
+    return length
+test_5 = hailstone(10)
+print(test_5)
 
-
-a = hailstone(10)
-print(a)
