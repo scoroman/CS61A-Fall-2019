@@ -25,12 +25,7 @@ def num_sevens(n):
     ...       ['Assign', 'AugAssign'])
     True
     """
-    if(n == 7): return 1 
-    if( n < 10 ): return 0
-    elif( n% 10 == 7):
-        return 1 + num_sevens(n // 10)
-    else: 
-        return num_sevens( n // 10)
+    "*** YOUR CODE HERE ***"
 
 def pingpong(n):
     """Return the nth element of the ping-pong sequence.
@@ -64,22 +59,7 @@ def pingpong(n):
     >>> check(HW_SOURCE_FILE, 'pingpong', ['Assign', 'AugAssign'])
     True
     """
-    def helper(k, i, goUp):
-        if(k == n): return i 
-
-        if(goUp): 
-            return switch_direction(k +1, i + 1, goUp)
-        else: 
-            return switch_direction(k +1, i - 1, goUp)
-
-    def switch_direction(k, i, goUp):
-        if(num_sevens(k) or k % 7 == 0): 
-            return helper(k, i, not goUp)
-        else: 
-            return helper(k, i, goUp)
-
-    return helper(1, 1, True)
- 
+    "*** YOUR CODE HERE ***"
 
 def count_change(amount):
     """Return the number of ways to make change for amount.
@@ -97,19 +77,8 @@ def count_change(amount):
     >>> check(HW_SOURCE_FILE, 'count_change', ['While', 'For'])
     True
     """
-    def helper(n, amount):
-        if(amount == 0): return 1 
-        elif(amount < 0): return 0
-        elif( n > amount): return 0     
-        else: 
-            with_n = helper(n, amount -n)
-            without_n = helper(2 * n, amount)
-        return with_n + without_n
-    return helper(1, amount)
+    "*** YOUR CODE HERE ***"
 
-def check_val(lst_check):
-    if(type(lst_check) != list):
-        return lst_check
 
 def flatten(lst):
     """Returns a flattened version of lst.
@@ -127,18 +96,7 @@ def flatten(lst):
     >>> x
     [[1, [1, 1]], 1, [1, 1]]
     """
-    flat = []
-    for nums in lst:
-        if(type(nums) != list):
-           flat.append(check_val(nums))
-        else: 
-            for val in nums: 
-                if(type(val) != list):
-                    flat.append(check_val(val))
-                else: 
-                    for val1 in val: 
-                        flat.append(check_val(val1))
-    return flat
+    "*** YOUR CODE HERE ***"
 
 ###################
 # Extra Questions #
